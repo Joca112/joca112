@@ -1,0 +1,101 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Corpo com fundo preto */
+body {
+  background-color: rgb(80, 10, 10);
+  overflow: auto; /* Para esconder barras de rolagem enquanto os corações caem */
+  position: relative;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  color: white;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Estilo do card principal */
+.card {
+  width: 300px;
+  height: 200px;
+  background: #ffbfd5;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Mensagem e texto ocultos inicialmente */
+.mensagem, .texto {
+  max-width: 600px;
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+  color: #333;
+}
+
+/* Aparecer a mensagem e texto */
+.mensagem.aparecer, .texto.aparecer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animação da chuva de corações */
+.coracao {
+  position: absolute;
+  top: -50px;
+  color: #ff4d6d;
+  font-size: 24px;
+  animation-name: cair;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Keyframes da animação de queda */
+@keyframes cair {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsividade */
+@media screen and (max-width: 600px) {
+  .card {
+    width: 90%;
+    height: 180px;
+  }
+
+  .mensagem, .texto {
+    padding: 20px;
+  }
+}
